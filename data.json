@@ -1,0 +1,30 @@
+{
+	"expirience": [
+		{
+			"interval": "2021-2022",
+			"company": "PixlPark",
+			"position": "Web-developer",
+			"exp": "Doing smth"
+		},
+		{
+			"interval": "2022-2023",
+			"company": "Medesk",
+			"position": "Layout-manager",
+			"exp": "Doing smth"
+		}
+	],
+	"projects": [
+		{
+			"title": "Project1",
+			"linkToCover": "",
+			"linkToGit": "",
+			"linkToDemo": ""
+		},
+		{
+			"title": "Project2",
+			"linkToCover": "",
+			"linkToGit": "",
+			"linkToDemo": ""
+		}
+	]
+}
