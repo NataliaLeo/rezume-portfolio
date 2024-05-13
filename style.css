@@ -26,7 +26,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: center/cover no-repeat url(img/background.jpg);
+    background: center/cover no-repeat url(./img/background.jpg);
     opacity: 0.08;
     -webkit-filter: brightness(150%);
     filter: brightness(150%);
@@ -64,7 +64,7 @@ span {
       flex-wrap: wrap; } }
   .start .start-inner .start-photo {
     width: 45%;
-    background: center/cover no-repeat url(/img/photo.jpg);
+    background: center/cover no-repeat url(./img/photo.jpg);
     display: block;
     height: 100vh;
     min-height: 40vw; }
@@ -72,7 +72,7 @@ span {
       .start .start-inner .start-photo {
         width: 100%;
         height: 50vh;
-        background: center 30%/cover no-repeat url(/img/photo.jpg); } }
+        background: center 30%/cover no-repeat url(./img/photo.jpg); } }
   .start .start-inner .start-about {
     width: 65%;
     display: flex;
