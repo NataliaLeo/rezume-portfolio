@@ -42,6 +42,46 @@ body {
 		z-index: 10;
 		pointer-events: none;
 	}
+	.loader {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $light-blue;
+		transition: opacity 0.75s, visibility 0.75s;
+	}
+	.loader-hidden {
+		opacity: 0;
+		visibility: hidden;
+	}
+	.loader::after {
+		content: "";
+		width: 80px;
+		height: 80px;
+		border: 15px solid $white;
+		border-top-color: $black;
+		opacity: 0.75;
+		border-radius: 50%;
+		-webkit-animation: loading 1s ease infinite;
+		animation: loading 1s ease infinite;
+	}
+	@-webkit-keyframes loading {
+		from {
+			transform: rotate(0turn);
+		}
+		to {
+			transform: rotate(1turn);
+		}
+	}
+	@keyframes loading {
+		from {
+			transform: rotate(0turn);
+		}
+		to {
+			transform: rotate(1turn);
+		}
+	}
 }
 
 a {
@@ -139,7 +179,7 @@ span {
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: calc(#{($index)} * 2);
 		justify-items: center;
-		padding: calc(#{($index)} * 4);
+		padding: calc(#{($index)} * 5);
 		color: $white;
 		@media screen and (max-width: 1600px) {
 			grid-template-columns: 1fr;
@@ -209,15 +249,17 @@ span {
 			width: calc((100vw - #{($index)} * 20) / 3);
 			height: calc((100vw - #{($index)} * 20) / 3);
 			min-width: 200px;
-			max-height: 200px;
-			max-width: 400px;
-			max-height: 400px;
+			min-height: 200px;
+			// max-width: 400px;
+			// max-height: 400px;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
 			@media screen and (max-width: 1600px) {
 				width: calc((100vw - #{($index)} * 15) / 2);
 				height: calc((100vw - #{($index)} * 15) / 2);
+				max-width: 400px;
+				max-height: 400px;
 			}
 			@media screen and (max-width: 800px) {
 				width: calc((100vw - #{($index)} * 10));

@@ -32,7 +32,37 @@ body {
     filter: brightness(150%);
     z-index: 10;
     pointer-events: none; }
-
+  body .loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7c95b1;
+    transition: opacity 0.75s, visibility 0.75s; }
+  body .loader-hidden {
+    opacity: 0;
+    visibility: hidden; }
+  body .loader::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 15px solid #fff;
+    border-top-color: #333;
+    opacity: 0.75;
+    border-radius: 50%;
+    -webkit-animation: loading 1s ease infinite;
+    animation: loading 1s ease infinite; }
+@-webkit-keyframes loading {
+  from {
+    transform: rotate(0turn); }
+  to {
+    transform: rotate(1turn); } }
+@keyframes loading {
+  from {
+    transform: rotate(0turn); }
+  to {
+    transform: rotate(1turn); } }
 a {
   text-decoration: none;
   color: inherit; }
@@ -113,7 +143,7 @@ span {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: calc(calc(1vw + 1vh) * 2);
     justify-items: center;
-    padding: calc(calc(1vw + 1vh) * 4);
+    padding: calc(calc(1vw + 1vh) * 5);
     color: #fff; }
     @media screen and (max-width: 1600px) {
       .experience .experience-inner {
@@ -173,16 +203,16 @@ span {
       width: calc((100vw - calc(1vw + 1vh) * 20) / 3);
       height: calc((100vw - calc(1vw + 1vh) * 20) / 3);
       min-width: 200px;
-      max-height: 200px;
-      max-width: 400px;
-      max-height: 400px;
+      min-height: 200px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain; }
       @media screen and (max-width: 1600px) {
         .projects .projects-inner .projects-item {
           width: calc((100vw - calc(1vw + 1vh) * 15) / 2);
-          height: calc((100vw - calc(1vw + 1vh) * 15) / 2); } }
+          height: calc((100vw - calc(1vw + 1vh) * 15) / 2);
+          max-width: 400px;
+          max-height: 400px; } }
       @media screen and (max-width: 800px) {
         .projects .projects-inner .projects-item {
           width: calc((100vw - calc(1vw + 1vh) * 10));
