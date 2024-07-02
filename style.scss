@@ -3,6 +3,8 @@
 $light-blue: #7c95b1;
 $black: #333;
 $white: #fff;
+$gray: #dcdede40;
+$yellow: #d99837;
 
 $index: calc(1vw + 1vh);
 
@@ -12,6 +14,12 @@ $index: calc(1vw + 1vh);
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+}
+::-moz-selection {
+	background-color: rgba($yellow, 0.5);
+}
+::selection {
+	background-color: rgba($yellow, 0.5);
 }
 
 html {
@@ -94,6 +102,14 @@ a {
 	font-weight: normal;
 }
 
+.block-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: calc(28px + 14 * (100vw / 1280));
+}
+
 p,
 li {
 	font-size: calc(12px + 5 * (100vw / 1280));
@@ -158,6 +174,10 @@ span {
 					font-weight: bold;
 					font-size: calc(24px + 14 * (100vw / 1280));
 				}
+				.grade {
+					font-size: calc(12px + 8 * (100vw / 1280));
+					background-color: rgba($yellow, 0.5);
+				}
 			}
 			p {
 				padding: 30px 0;
@@ -187,11 +207,7 @@ span {
 		}
 		.experience-header {
 			grid-column: 1/3;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 			padding-bottom: $index;
-			font-size: calc(28px + 14 * (100vw / 1280));
 			@media screen and (max-width: 1600px) {
 				grid-column: auto;
 				width: 100%;
@@ -199,9 +215,8 @@ span {
 		}
 		.experience-item {
 			padding-bottom: $index;
-			h1 {
-				font-size: calc(24px + 14 * (100vw / 1280));
-				padding: calc(#{($index)} / 3) 0;
+			p {
+				padding: calc(#{($index)}) 0;
 			}
 			ul {
 				padding-top: calc(#{($index)});
@@ -212,6 +227,10 @@ span {
 			.position {
 				font-weight: 600;
 			}
+			b {
+				background-color: rgba($yellow, 0.5);
+				padding: 0 5px;
+			}
 		}
 	}
 }
@@ -219,95 +238,108 @@ span {
 .projects {
 	background-color: $white;
 	display: flex;
-	overflow-x: hidden;
-	position: relative;
 	width: 100%;
-	.progressbar {
-		position: absolute;
-		inset: calc(#{($index)} * 5) auto auto calc(#{($index)} * 5);
-		width: calc(100vw - #{($index)} * 10);
-		.mask {
-			width: 0;
-		}
-	}
 	.projects-inner {
 		min-height: 100vh;
+		width: 100%;
 		padding: calc(#{($index)} * 5);
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-		-moz-column-gap: calc(#{($index)} * 5);
-		column-gap: calc(#{($index)} * 5);
+		-moz-row-gap: calc(#{($index)} * 4);
+		row-gap: calc(#{($index)} * 4);
 		align-items: center;
-		width: -webkit-fit-content;
-		width: -moz-fit-content;
-		width: fit-content;
 		.projects-item {
 			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: flex-end;
-			width: calc((100vw - #{($index)} * 20) / 3);
+			flex-direction: row;
+			width: 100%;
 			height: calc((100vw - #{($index)} * 20) / 3);
 			min-width: 200px;
 			min-height: 200px;
-			// max-width: 400px;
-			// max-height: 400px;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
+			background-color: $gray;
 			@media screen and (max-width: 1600px) {
-				width: calc((100vw - #{($index)} * 15) / 2);
-				height: calc((100vw - #{($index)} * 15) / 2);
-				max-width: 400px;
+				height: auto;
 				max-height: 400px;
 			}
-			@media screen and (max-width: 800px) {
-				width: calc((100vw - #{($index)} * 10));
-				height: calc((100vw - #{($index)} * 10));
+			@media screen and (max-width: 1000px) {
+				min-width: 300px;
 			}
-			.go-to-buttons {
-				display: flex;
-				justify-content: space-around;
-				flex-wrap: wrap;
-				width: 100%;
-				padding: 0 20px;
-				-moz-column-gap: 20px;
-				column-gap: 20px;
+			img {
+				-o-object-fit: contain;
+				object-fit: contain;
+
+				@media screen and (max-width: 1000px) {
+					display: none;
+				}
 			}
-			.go-to-btn,
-			h1 {
-				margin-bottom: $index;
-			}
-			h1 {
-				color: $white;
-				text-align: center;
-			}
-			.go-to-btn {
-				min-width: 140px;
-				text-align: center;
-				display: inline-block;
-				padding: calc(#{($index)} / 2);
-				background-color: $light-blue;
-				color: $white;
-				text-transform: uppercase;
-				cursor: pointer;
-				letter-spacing: 2px;
-				position: relative;
-				overflow: hidden;
-			}
-			.go-to-btn:before {
-				content: "";
-				position: absolute;
+			.projects-item_content {
 				height: 100%;
-				width: 0;
-				background: #fff;
-				left: 0;
-				bottom: 0;
-				transition: all 0.3s;
-				opacity: 0.3;
-			}
-			.go-to-btn:hover:before {
 				width: 100%;
+				padding: calc(#{($index)}) calc(#{($index)}* 2);
+				position: relative;
+				@media screen and (max-width: 1000px) {
+					padding-bottom: calc(#{($index)}* 5);
+				}
+				@media screen and (max-width: 500px) {
+					padding-bottom: calc(#{($index)}* 7);
+				}
+				h1 {
+					color: $light-blue;
+				}
+				& > *:not(:last-child) {
+					margin-bottom: $index;
+				}
+				.projects-item_tech {
+					color: rgba($yellow, 0.75);
+					font-weight: 900;
+					text-transform: uppercase;
+				}
+				.projects-item_descr {
+					a {
+						font-weight: 600;
+						text-decoration: underline;
+					}
+				}
+				.go-to-buttons {
+					display: flex;
+					flex-wrap: wrap;
+					-moz-column-gap: 20px;
+					column-gap: 20px;
+					position: absolute;
+					left: 0;
+					bottom: calc(#{($index)});
+					padding: 0 calc(#{($index)}* 2);
+					@media screen and (max-width: 500px) {
+						row-gap: 10px;
+					}
+					.go-to-btn {
+						min-width: 140px;
+						text-align: center;
+						display: inline-block;
+						padding: calc(#{($index)} / 2);
+						background-color: $light-blue;
+						color: $white;
+						text-transform: uppercase;
+						cursor: pointer;
+						letter-spacing: 2px;
+						position: relative;
+						overflow: hidden;
+					}
+					.go-to-btn:before {
+						content: "";
+						position: absolute;
+						height: 100%;
+						width: 0;
+						background: #fff;
+						left: 0;
+						bottom: 0;
+						transition: all 0.3s;
+						opacity: 0.3;
+					}
+					.go-to-btn:hover:before {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}

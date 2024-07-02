@@ -23,28 +23,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			},
 		});
 
-	//gallery horizontal scroll
+	//project animation
 	const container = document.querySelector(".projects-inner");
 	const sections = gsap.utils.toArray(".projects-inner .projects-item");
-	const mask = document.querySelector(".mask");
 
-	let scrollTween = gsap.to(container, {
-		x: -container.offsetWidth + visualViewport.width,
-		ease: "none",
-		scrollTrigger: {
-			trigger: ".projects",
-			pin: true,
-			scrub: 1,
-		},
-	});
-	gsap.to(mask, {
-		width: "100%",
-		scrollTrigger: {
-			trigger: ".projects-inner",
-			start: "top top",
-			scrub: 1,
-			end: "bottom top",
-		},
+	sections.forEach((elem) => {
+		ScrollTrigger.create({
+			trigger: elem,
+			start: "top bottom",
+			animation: gsap.from(elem, {
+				autoAlpha: 0,
+				y: visualViewport.height / 3,
+				duration: 0.5,
+			}),
+		});
 	});
 });
 
@@ -52,8 +44,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 Вопросы к решению:
 
-- адаптивность анимации
 
-- скорость прокрутки проджектов
 
 */
